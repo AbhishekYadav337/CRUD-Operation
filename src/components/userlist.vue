@@ -86,6 +86,8 @@ export default {
       var obj = JSON.parse(sessionStorage.user);
       let index = this.tableData.findIndex((i)=> i.id == obj.id);
       Object.assign(this.tableData[index], obj);
+      // var data = JSON.parse(sessionStorage.newUser);
+      // this.tableData.push(data);
     }
 
 };
