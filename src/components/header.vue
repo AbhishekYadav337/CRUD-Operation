@@ -1,7 +1,7 @@
 <template>
   <div class="header-container">
     <span>Users</span>
-    <button type="button">Create User</button>
+    <button type="button" @click="createUser()">Create User</button>
   </div>
 </template>
 

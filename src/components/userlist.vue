@@ -19,8 +19,8 @@
       <td>{{i.phone}}</td>
       <td>{{i.active}}</td>
       <td>
-          <button type="button" class="editBtn">Edit</button>
-          <button type="button" class="deleteBtn" @click="deleteUser(i.id)">Delete</button>
+        <button type="button" class="editBtn" @click="editUser(i)">Edit</button>
+        <button type="button" class="deleteBtn" @click="deleteUser(i.id)">Delete</button>
       </td>
     </tr>
   </tbody>
@@ -32,47 +32,59 @@
 export default {
     data: () => ({
         tableData: [
-            { 
-              id: 1,
-              name: 'Sakshi',
-              surname: 'Tembhare',
-              email: 'Tembhare@gmail.com',
-              phone: 1234567890,
-              active: 'active'
-            },
-            {
-              id: 2,
-              name: 'Mahima',
-              surname: 'Mahima',
-              email: 'Mahima@Mahima.om',
-              phone: 24334443434,
-              active: 'active'
-            },
-            {
-              id: 3,
-              name: 'Pooja',
-              surname: 'Sharma',
-              email: 'sharma@gmail.com',
-              phone: 3487938794384,
-              active: 'active'
-            },
-            {
-              id: 4,
-              name: 'Abhishek',
-              surname: 'Yadav',
-              email: 'ay163626@gmail.com',
-              phone: 9987734734,
-              active: 'active'
-            },
-        ]
+      { 
+        id: 1,
+        name: 'Sakshi',
+        surname: 'Tembhare',
+        email: 'Tembhare@gmail.com',
+        phone: 1234567890,
+        active: 'active'
+      },
+      {
+        id: 2,
+        name: 'Mahima',
+        surname: 'Mahima',
+        email: 'Mahima@Mahima.om',
+        phone: 24334443434,
+        active: 'active'
+      },
+      {
+        id: 3,
+        name: 'Pooja',
+        surname: 'Sharma',
+        email: 'sharma@gmail.com',
+        phone: 3487938794384,
+        active: 'active'
+      },
+      {
+        id: 4,
+        name: 'Abhishek',
+        surname: 'Yadav',
+        email: 'ay163626@gmail.com',
+        phone: 9987734734,
+        active: 'active'
+      },
+  ]
     }),
 
     methods:{
       deleteUser(userId){
         let index = this.tableData.findIndex((i)=> i.id === userId);
         this.tableData.splice(index, 1);
+      },
+
+      editUser(user){
+        sessionStorage.setItem('user', JSON.stringify(user));
+        this.$router.push('/edit');
       }
+    },
+
+    mounted(){
+      var obj = JSON.parse(sessionStorage.user);
+      let index = this.tableData.findIndex((i)=> i.id == obj.id);
+      Object.assign(this.tableData[index], obj)
     }
+
 };
 </script>
 

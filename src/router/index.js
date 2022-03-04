@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import home from '../views/home';
+import edit from '../components/edit';
 
 Vue.use(VueRouter)
 
@@ -8,6 +9,10 @@ const routes = [
   {
     path: "/",
     component: home
+  },
+  {
+    path: "/edit",
+    component: edit
   }
 ]
 
