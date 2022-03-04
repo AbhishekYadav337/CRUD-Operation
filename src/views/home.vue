@@ -1,15 +1,18 @@
 <template>
     <div class="container">
         <Header/>
-        <hr>
+        <hr/>
+        <userlist/>
     </div>
 </template>
 
 <script>
 import Header from "../components/header.vue";
+import Userlist from '../components/userlist.vue';
 export default {
     components:{
-        Header
+        Header,
+        Userlist
     }
 }
 </script>
