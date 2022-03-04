@@ -31,7 +31,7 @@
 <script>
 export default {
     data: () => ({
-        tableData: [
+    tableData: [
       { 
         id: 1,
         name: 'Sakshi',
@@ -69,8 +69,11 @@ export default {
 
     methods:{
       deleteUser(userId){
-        let index = this.tableData.findIndex((i)=> i.id === userId);
-        this.tableData.splice(index, 1);
+        let alert = confirm('Are you sure want to delete user');
+        if(alert){
+          let index = this.tableData.findIndex((i)=> i.id === userId);
+          this.tableData.splice(index, 1);
+        }
       },
 
       editUser(user){
@@ -82,7 +85,7 @@ export default {
     mounted(){
       var obj = JSON.parse(sessionStorage.user);
       let index = this.tableData.findIndex((i)=> i.id == obj.id);
-      Object.assign(this.tableData[index], obj)
+      Object.assign(this.tableData[index], obj);
     }
 
 };
